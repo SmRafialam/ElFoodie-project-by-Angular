@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import { BookTableComponent } from './book-table/book-table.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
