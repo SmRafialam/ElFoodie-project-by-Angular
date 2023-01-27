@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 declare var getYear:any;
 
 @Component({
@@ -8,8 +8,20 @@ declare var getYear:any;
 })
 export class FooterComponent implements OnInit{
 
+  currentDate!: Date;
+  currentYear!: number;
 
   ngOnInit(): void {
-     getYear();
+   //  getYear();
+   this.currentDate = new Date();
+   this.currentYear = this.currentDate.getFullYear();
+   //console.log(currentYear);
   }
+
+//   getYear() {
+//     var currentDate = new Date();
+//     var currentYear = currentDate.getFullYear();
+//     alert(currentYear);
+
+// }
 }
