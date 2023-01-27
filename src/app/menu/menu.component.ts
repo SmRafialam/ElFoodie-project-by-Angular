@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { food } from '../food/data';
 import { FoodService } from '../services/food.service';
 import { Food } from '../shared/models/food';
-import { Tag } from '../shared/models/tag';
+import { Category } from '../shared/models/category';
 
 declare var menu:any;
 
@@ -14,7 +14,7 @@ declare var menu:any;
 export class MenuComponent implements OnInit{
 
   foods:Food[] = [];
-  tags:Tag[] = [];
+  categories:Category[] = [];
   food!: Food;
 
   constructor(private foodService:FoodService){
@@ -24,10 +24,17 @@ export class MenuComponent implements OnInit{
   ngOnInit(): void {
 
     this.foods = this.foodService.getAll();
-    this.tags = this.foodService.getAllTags();
-    
+    this.categories = this.foodService.getAllCategories();
+
     console.log(food)
     menu();
   }
-  
+
+  addCategory(category:number){
+    this.foods = this.foodService.getAllFoodsByCategory(category);
+    //console.log(foods);
+    // alert("ok");
+
+  }
+
 }

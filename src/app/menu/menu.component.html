@@ -1,5 +1,5 @@
  <!-- food section -->
-  
+
     <section class="food_section layout_padding">
       <div class="container">
         <div class="heading_container heading_center">
@@ -7,18 +7,18 @@
             Our Menu
           </h2>
         </div>
-  
-        <ul class="filters_menu" >
-          <li *ngFor="let tag of tags"> <a>{{tag.name}}</a> </li>
+
+        <ul class="filters_menu">
+          <li *ngFor="let category of categories" (click)="addCategory(category.id)"> <a>{{category.name}}</a> </li>
           <!-- <li data-filter=".burger"><a>Burger</a></li>
           <li data-filter=".pizza">Pizza</li>
           <li data-filter=".pasta">Pasta</li>
           <li data-filter=".fries">Fries</li> -->
         </ul>
-  
-        <div class="filters-content container ">
-          <div class="row grid" >
-            <div class="col-sm-6 col-lg-4 all" *ngFor="let food of foods">
+
+        <div class="filters-content">
+          <div class="row" >
+            <div class="col-sm-6 col-lg-4" *ngFor="let food of foods">
               <div class="box">
                 <div>
                   <div class="img-box">
@@ -712,8 +712,7 @@
         </div>
       </div>
     </section>
-  
+
     <!-- end food section -->
-  
-  
- 
+
+

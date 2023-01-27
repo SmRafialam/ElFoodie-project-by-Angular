@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Food } from '../shared/models/food'
-import { Tag } from '../shared/models/tag'
+import { Category } from '../shared/models/category';
+import { Food } from '../shared/models/food';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,21 @@ export class FoodService {
   }
 
 
-  getAllTags():Tag[]{
+  getAllCategories():Category[]{
     return [
-      {name: "All"},
-      {name: "Burger"},
-      {name: "Pizza"},
-      {name: "Pasta"},
-      {name: "Fries"},
+      {name: "All",    id: 1},
+      {name: "Burger", id: 2},
+      {name: "Pizza",  id: 3},
+      {name: "Pasta",  id: 4},
+      {name: "Fries",  id: 5},
     ]
   }
 
 
-  getAllFoodsByTag(tag:string):Food[]{
+  getAllFoodsByCategory(category:number):Food[]{
+    return category == 1?this.getAll():this.getAll().filter(food=>food.category?.includes(category))
 
-    return tag == "All"?this.getAll():this.getAll().filter(food=>food.category?.includes(tag))
+    // return tag == 'All'?this.getAll():this.getAll().filter(food=>food.category==food.id?)
 
     // if(tag == "All"){
     //   return this.getAll();
@@ -44,75 +45,73 @@ export class FoodService {
         title: "Delicious Pizza",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
         price: 20,
+        category: [1,3]
       },
       {
         id: 2,
         imagePath: '/assets/images/f2.png',
         title: "Delicious Burger",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 15
+        price: 15,
+        category: [1,2]
       },
       {
         id: 3,
         imagePath: '/assets/images/f3.png',
         title: "Delicious Pizza",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 17
+        price: 17,
+        category: [1,3]
       },
       {
         id: 4,
         imagePath: '/assets/images/f4.png',
         title: "Delicious Pasta",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 18
+        price: 18,
+        category: [1,4]
       },
       {
         id: 5,
         imagePath: '/assets/images/f5.png',
         title: "French Fries",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 10
+        price: 10,
+        category: [1,5]
       },
       {
         id: 6,
         imagePath: '/assets/images/f6.png',
         title: "Delicious Pizza",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 15
+        price: 15,
+        category: [1,3]
       },
       {
         id: 7,
         imagePath: '/assets/images/f7.png',
         title: "Tasty Burger",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 12
+        price: 12,
+        category: [1,2]
       },
       {
         id: 8,
         imagePath: '/assets/images/f8.png',
         title: "Tasty Burger",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 14
+        price: 14,
+        category: [1,2]
       },
       {
         id: 9,
         imagePath: '/assets/images/f9.png',
         title: "Delicious Pasta",
         description: "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-        price: 10
+        price: 10,
+        category: [1,4]
       }
 
-
-
-      // '/assets/images/f1.png',
-      // '/assets/images/f2.png',
-      // '/assets/images/f3.png',
-      // '/assets/images/f4.png',
-      // '/assets/images/f5.png',
-      // '/assets/images/f6.png',
-      // '/assets/images/f7.png',
-      // '/assets/images/f8.png',
-      // '/assets/images/f9.png'
     ]
   }
 }
