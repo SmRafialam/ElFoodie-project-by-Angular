@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit{
     this.categories = this.foodService.getAllCategories();
 
     console.log(food)
-    menu();
+    //menu();
   }
 
   addCategory(category:number){

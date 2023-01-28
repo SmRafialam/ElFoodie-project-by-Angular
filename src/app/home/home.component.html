@@ -146,15 +146,15 @@
     </div>
   </section>
   <!-- end offer section -->
-  
+
   <!-- food section -->
   <app-menu></app-menu>
   <!-- end food section -->
-  
+
   <!-- about section -->
   <section class="about_section layout_padding">
     <div class="container  ">
-  
+
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
@@ -183,7 +183,7 @@
     </div>
   </section>
   <!-- end about section -->
-  
+
   <!-- book section -->
   <section class="book_section layout_padding">
     <div class="container">
@@ -195,40 +195,41 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
               <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
+                <input type="text" class="form-control" placeholder="Your Name" ngModel name="name" required/>
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
+                <input type="number" class="form-control" placeholder="Phone Number" ngModel name="number" required/>
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
+                <input type="email" class="form-control" placeholder="Your Email" ngModel name="email" required email #email="ngModel"/>
+                <span class="help-block text-danger" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
               </div>
               <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
+                <select class="form-control" [ngModel]="defaultVal" name="persons" >
+                  <option value="0" disabled>
                     How many persons?
                   </option>
-                  <option value="">
-                    2
+                  <option value="{{option}}" *ngFor="let option of options">
+                    {{option}}
                   </option>
-                  <option value="">
+                  <!-- <option value="3">
                     3
                   </option>
-                  <option value="">
+                  <option value="4">
                     4
                   </option>
-                  <option value="">
+                  <option value="5">
                     5
-                  </option>
+                  </option> -->
                 </select>
               </div>
               <div>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" ngModel name="date" required>
               </div>
               <div class="btn_box">
-                <button>
+                <button type="submit" [disabled]="!f.valid">
                   Book Now
                 </button>
               </div>
@@ -244,7 +245,7 @@
     </div>
   </section>
   <!-- end book section -->
-  
+
   <!-- client section -->
   <section class="client_section layout_padding-bottom">
     <div class="container">
