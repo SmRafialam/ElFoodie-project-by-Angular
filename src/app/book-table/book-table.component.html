@@ -1,61 +1,66 @@
 
-  <!-- book section -->
-  <section class="book_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Book A Table
-        </h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
-              </div>
-              <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
-                    How many persons?
-                  </option>
-                  <option value="">
-                    2
-                  </option>
-                  <option value="">
-                    3
-                  </option>
-                  <option value="">
-                    4
-                  </option>
-                  <option value="">
-                    5
-                  </option>
-                </select>
-              </div>
-              <div>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
-                <button>
-                  Book Now
-                </button>
-              </div>
-            </form>
+
+
+
+    <!-- book section -->
+    <section class="book_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Book A Table
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form_container">
+              <!-- <pre>{{f.value | json}}</pre> -->
+              <form>
+                <div>
+                  <input type="text" class="form-control" placeholder="Your Name" ngModel name="name" required/>
+                </div>
+                <div>
+                  <input type="number" class="form-control" placeholder="Phone Number" ngModel name="number" required/>
+                </div>
+                <div>
+                  <input type="email" class="form-control" placeholder="Your Email" ngModel name="email" required email #email="ngModel"/>
+                  <span class="help-block text-danger" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+                </div>
+                <div>
+                  <select class="form-control" ngModel name="persons" >
+                    <option value="0">
+                      How many persons?
+                    </option>
+                    <!-- <option *ngFor="let option of options" value="{{option}}" >
+                      {{option}}
+                    </option> -->
+                    <option selected [value]="3">
+                      3
+                    </option>
+                    <option [value]="4">
+                      4
+                    </option>
+                    <option [value]="5">
+                      5
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <input type="date" class="form-control" ngModel name="date" required>
+                </div>
+                <!-- <div class="btn_box">
+                  <button type="submit" [disabled]="!f.valid">
+                    Book Now
+                  </button>
+                </div> -->
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="map_container ">
+              <div id="googleMap"></div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
-  <!-- end book section -->
+    </section>
+    <!-- end book section -->

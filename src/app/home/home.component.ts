@@ -13,7 +13,7 @@ declare var myMap: any;
 })
 export class HomeComponent implements OnInit {
 
-  defaultVal = 3;
+  defaultVal = 0;
   options:number[]=[1,2,3,4,5];
   constructor(){
 
@@ -27,6 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    console.log(form);
+    console.log(form.value);
   }
 }
